@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>vue source</title>
+</head>
+
+<body>
+  vue source
+</body>
+<script src="/dist/umd/vue.js"></script>
+<script>
+  let vm = new Vue({
+    el: '#app',
+    data() {
+      return {
+        name: 'hello',
+        age: 18,
+        depObj: {
+          job: 'web',
+          school: 'datong'
+        },
+        arr: [1, 2, {a: 1}, {b: 2}] // 数组中对象的响应
+      }
+    },
+    methods: {
+      sayHello() {
+        console.log('hi, xxx')
+      }
+    }
+  })
+  vm._data.arr.push({vv: 999})
+  console.log('$data', vm._data)
+</script>
+
+</html>
