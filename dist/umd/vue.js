@@ -194,13 +194,46 @@
     observe(data);
   }
 
+  // Regular Expressions for parsing tags and attributes
+  var ncname = "[a-zA-Z_][\\-\\.0-9_a-zA-Z".concat(unicodeRegExp.source, "]*");
+  // 虚拟dom：用对象来描述真实的dom节点信息
+
+  function compileToFunction(template) {
+    console.log(333, template); // 将template 模板编译成
+
+    return function render() {};
+  }
+
   function initMixin(Vue) {
     // 初始化流程
     Vue.prototype._init = function (options) {
       var vm = this;
       vm.$options = options; // 初始化状态
 
-      initState(vm);
+      initState(vm); // 挂载
+
+      if (vm.$options.el) {
+        vm.$mount(vm.$options.el);
+      }
+    };
+
+    Vue.prototype.$mount = function (el) {
+      var vm = this;
+      var options = vm.$options;
+      el = document.querySelector(el); // render template el 的渲染顺序
+
+      if (!options.render) {
+        // 对模板进行编译
+        var tempalte = options.tempalte; // 对el进行编译
+
+        if (!tempalte && el) {
+          tempalte = el.outerHTML;
+        }
+
+        var render = compileToFunction(tempalte); // ？
+
+        options.render = render;
+      }
     };
   }
 
