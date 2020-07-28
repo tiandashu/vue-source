@@ -13,7 +13,10 @@ rollup.config.js
 
 ### 脚本
 ```bash
-# -c 指定配置文件
+# -c 指定配置文件，--config
 # -w 监听文件，--watch
 rollup -c -w 
 ```
+
+### vue 源码分析
+

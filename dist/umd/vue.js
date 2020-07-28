@@ -195,14 +195,29 @@
   }
 
   // Regular Expressions for parsing tags and attributes
-  var ncname = "[a-zA-Z_][\\-\\.0-9_a-zA-Z".concat(unicodeRegExp.source, "]*");
   // 虚拟dom：用对象来描述真实的dom节点信息
 
   function compileToFunction(template) {
-    console.log(333, template); // 将template 模板编译成
+    console.log(333, template); // 将template 模板解析成render() 函数
 
     return function render() {};
-  }
+  } // 解析的具体规则，先匹配到在删除
+  // let htmlStr = `
+  // <div id="app">
+  //   <p>name</p>
+  // </div>`
+  // let htmlParse = {
+  //   tag: 'div',
+  //   attrs: [
+  //     {
+  //       name: 'id',
+  //       value: 'app'
+  //     }
+  //   ],
+  //   parent: null,
+  //   type: 1,
+  //   children: []
+  // }
 
   function initMixin(Vue) {
     // 初始化流程
